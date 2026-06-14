@@ -1,8 +1,8 @@
-import postModel from "../../database/models/post.model.js";
+import postModel from ".././database/models/post.model.js";
 export const authorize = async (req, res, next) => {
   try {
-    let { postId } = req.params;
-    let post = await postModel.findById(postId);
+    let { id } = req.params;
+    let post = await postModel.findById(id);
     if (!post) {
       return res.status(404).json({ message: "post not found" });
     }

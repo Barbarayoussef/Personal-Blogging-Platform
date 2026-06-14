@@ -12,8 +12,9 @@ export const generateBothTokens = (user) => {
   return tokens;
 };
 
-export const authorize = (req, res, next) => {
+export const authenticate = (req, res, next) => {
   let { authorization } = req.headers;
+  console.log(authorization);
   if (!authorization) {
     return res.status(401).json({ message: "Unauthorized" });
   }
@@ -23,6 +24,6 @@ export const authorize = (req, res, next) => {
     req.user = decoded;
     next();
   } catch (err) {
-    return res.status(401).json({ message: "Unauthorized" });
+    return res.status(401).json({ message: "Unauthorized from error" });
   }
 };
