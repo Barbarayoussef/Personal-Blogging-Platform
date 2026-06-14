@@ -2,6 +2,9 @@ import postModel from ".././database/models/post.model.js";
 export const authorize = async (req, res, next) => {
   try {
     let { id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ message: "Invalid post ID format." });
+    }
     let post = await postModel.findById(id);
     if (!post) {
       return res.status(404).json({ message: "post not found" });

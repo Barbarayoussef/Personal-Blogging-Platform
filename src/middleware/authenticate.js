@@ -20,6 +20,13 @@ export const authenticate = (req, res, next) => {
   }
   try {
     let [bearer, token] = authorization.split(" ");
+    if (bearer !== "Bearer" || !token) {
+      return res
+        .status(401)
+        .json({
+          message: "Unauthorized. Token format must be 'Bearer <token>'",
+        });
+    }
     let decoded = jwt.verify(token, env.userSignature);
     req.user = decoded;
     next();

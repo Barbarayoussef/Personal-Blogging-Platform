@@ -12,7 +12,7 @@ export const registerUser = async (req, res) => {
   if (password !== confirmPassword) {
     return res.status(400).json({ message: "passwords do not match" });
   }
-  let hashedPassword = await bcrypt.hash(password, Number(env.SALT_ROUNDS));
+  let hashedPassword = await bcrypt.hash(password, Number(env.saltRounds));
   let newUser = await userModel.create({
     name,
     email,
