@@ -15,3 +15,8 @@ export const registerSchema = joi.object({
     "any.only": "Passwords do not match.",
   }),
 });
+
+export const loginSchema = joi.object({
+  email: joi.string().email().required(),
+  password: joi.string().required(),
+});
