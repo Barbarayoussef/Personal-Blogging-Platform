@@ -1,4 +1,5 @@
 import postModel from ".././database/models/post.model.js";
+import mongoose from "mongoose";
 export const authorize = async (req, res, next) => {
   try {
     let { id } = req.params;

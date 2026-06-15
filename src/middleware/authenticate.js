@@ -14,23 +14,20 @@ export const generateBothTokens = (user) => {
 
 export const authenticate = (req, res, next) => {
   let { authorization } = req.headers;
-  console.log(authorization);
   if (!authorization) {
     return res.status(401).json({ message: "Unauthorized" });
   }
   try {
     let [bearer, token] = authorization.split(" ");
     if (bearer !== "Bearer" || !token) {
-      return res
-        .status(401)
-        .json({
-          message: "Unauthorized. Token format must be 'Bearer <token>'",
-        });
+      return res.status(401).json({
+        message: "Unauthorized. Token format must be 'Bearer <token>'",
+      });
     }
     let decoded = jwt.verify(token, env.userSignature);
     req.user = decoded;
     next();
   } catch (err) {
-    return res.status(401).json({ message: "Unauthorized from error" });
+    return res.status(401).json({ message: "Unauthorized" });
   }
 };
