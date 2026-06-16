@@ -1,5 +1,9 @@
 import dotenv from "dotenv";
-dotenv.config({ path: "./config/.env" });
+import fs from "fs";
+
+if (fs.existsSync("./config/.env")) {
+  dotenv.config({ path: "./config/.env" });
+}
 
 let port = process.env.PORT;
 let mongoURL = process.env.MONGO_URL;

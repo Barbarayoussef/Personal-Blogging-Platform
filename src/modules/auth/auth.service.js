@@ -21,6 +21,7 @@ export const registerUser = async (req, res) => {
     });
     return res.status(201).json({ message: "user created successfully" });
   } catch (err) {
+    console.error("DEBUG ERROR:", err);
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
@@ -43,6 +44,7 @@ export const loginUser = async (req, res) => {
       refreshToken: refreshToken,
     });
   } catch (err) {
+    console.error("DEBUG ERROR:", err);
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };

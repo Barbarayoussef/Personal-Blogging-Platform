@@ -11,6 +11,7 @@ export const getAllPosts = async (req, res) => {
       .status(200)
       .json({ message: "posts retrieved successfully", posts });
   } catch (err) {
+    console.error("DEBUG ERROR:", err);
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
@@ -28,6 +29,7 @@ export const createPost = async (req, res) => {
       .status(201)
       .json({ message: "post created successfully", post: newPost });
   } catch (err) {
+    console.error("DEBUG ERROR:", err);
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
@@ -40,10 +42,11 @@ export const updatePostById = async (req, res) => {
     let post = await postModel.findByIdAndUpdate(
       req.post._id,
       { title, content },
-      { new: true }
+      { new: true },
     );
     return res.status(200).json({ message: "post updated successfully", post });
   } catch (err) {
+    console.error("DEBUG ERROR:", err);
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
@@ -53,6 +56,7 @@ export const deletePostById = async (req, res) => {
     await postModel.findByIdAndDelete(req.post._id);
     return res.status(200).json({ message: "post deleted successfully" });
   } catch (err) {
+    console.error("DEBUG ERROR:", err);
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
