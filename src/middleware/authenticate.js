@@ -15,7 +15,7 @@ export const generateBothTokens = (user) => {
 export const authenticate = (req, res, next) => {
   let { authorization } = req.headers;
   if (!authorization) {
-    return res.status(401).json({ message: "Unauthorized" });
+    return res.status(401).json({ message: "you must be logged in" });
   }
   try {
     let [bearer, token] = authorization.split(" ");
@@ -28,6 +28,6 @@ export const authenticate = (req, res, next) => {
     req.user = decoded;
     next();
   } catch (err) {
-    return res.status(401).json({ message: "Unauthorized" });
+    return res.status(401).json({ message: "you must be logged in" });
   }
 };
