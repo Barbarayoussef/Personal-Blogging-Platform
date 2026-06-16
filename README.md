@@ -31,21 +31,26 @@ A RESTful API for a personal blogging platform that allows users to register, lo
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/your-username/personal-blogging-platform.git
    cd personal-blogging-platform
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
 
 3. Set up environment variables:
+
    ```bash
    cp .env.example config/.env
    ```
+
    Then open `config/.env` and fill in your values:
+
    ```
    PORT=3000
    MONGO_URL=mongodb://localhost:27017/personal-blogging-platform
@@ -66,14 +71,15 @@ The server will start on `http://localhost:3000`.
 
 ### Auth
 
-| Method | Endpoint | Access | Description |
-|--------|----------|--------|-------------|
-| POST | `/auth/register` | Public | Register a new user |
-| POST | `/auth/login` | Public | Log in and receive a JWT |
+| Method | Endpoint         | Access | Description              |
+| ------ | ---------------- | ------ | ------------------------ |
+| POST   | `/auth/register` | Public | Register a new user      |
+| POST   | `/auth/login`    | Public | Log in and receive a JWT |
 
 #### POST `/auth/register`
 
 Request body:
+
 ```json
 {
   "name": "Barbara Youssef",
@@ -84,6 +90,7 @@ Request body:
 ```
 
 Response `201`:
+
 ```json
 { "message": "user created successfully" }
 ```
@@ -93,6 +100,7 @@ Response `201`:
 #### POST `/auth/login`
 
 Request body:
+
 ```json
 {
   "email": "barbara@example.com",
@@ -101,6 +109,7 @@ Request body:
 ```
 
 Response `200`:
+
 ```json
 {
   "message": "login successful",
@@ -114,20 +123,22 @@ Response `200`:
 ### Posts
 
 Protected routes require the `Authorization` header:
+
 ```
 Authorization: Bearer <accessToken>
 ```
 
-| Method | Endpoint | Access | Description |
-|--------|----------|--------|-------------|
-| GET | `/posts` | Public | Retrieve all blog posts |
-| POST | `/posts` | Protected | Create a new post |
-| PUT | `/posts/:id` | Protected (owner only) | Update a post |
-| DELETE | `/posts/:id` | Protected (owner only) | Delete a post |
+| Method | Endpoint     | Access                 | Description             |
+| ------ | ------------ | ---------------------- | ----------------------- |
+| GET    | `/posts`     | Public                 | Retrieve all blog posts |
+| POST   | `/posts`     | Protected              | Create a new post       |
+| PUT    | `/posts/:id` | Protected (owner only) | Update a post           |
+| DELETE | `/posts/:id` | Protected (owner only) | Delete a post           |
 
 #### GET `/posts`
 
 Response `200`:
+
 ```json
 {
   "message": "posts retrieved successfully",
@@ -140,6 +151,7 @@ Response `200`:
 #### POST `/posts`
 
 Request body:
+
 ```json
 {
   "title": "My First Post",
@@ -148,6 +160,7 @@ Request body:
 ```
 
 Response `201`:
+
 ```json
 {
   "message": "post created successfully",
@@ -160,6 +173,7 @@ Response `201`:
 #### PUT `/posts/:id`
 
 Request body (all fields optional):
+
 ```json
 {
   "title": "Updated Title",
@@ -168,6 +182,7 @@ Request body (all fields optional):
 ```
 
 Response `200`:
+
 ```json
 {
   "message": "post updated successfully",
@@ -180,6 +195,7 @@ Response `200`:
 #### DELETE `/posts/:id`
 
 Response `200`:
+
 ```json
 { "message": "post deleted successfully" }
 ```
@@ -194,13 +210,28 @@ All errors follow this format:
 { "message": "description of the error" }
 ```
 
-| Status Code | Meaning |
-|-------------|---------|
-| 400 | Bad request / validation error |
-| 401 | Unauthorized (missing or invalid token) |
-| 403 | Forbidden (not the post owner) |
-| 404 | Resource not found |
-| 500 | Internal server error |
+| Status Code | Meaning                                 |
+| ----------- | --------------------------------------- |
+| 400         | Bad request / validation error          |
+| 401         | Unauthorized (missing or invalid token) |
+| 403         | Forbidden (not the post owner)          |
+| 404         | Resource not found                      |
+| 500         | Internal server error                   |
+
+---
+
+## 🚀 Live Deployment
+
+This API is fully deployed and accessible in production.
+
+- **Live Demo Link**: `https://your-project-production.up.railway.app`
+
+### Production Environment Variables Used
+
+- `PORT` (Dynamically assigned by Railway)
+- `MONGO_URL` (Hosted via MongoDB Atlas Cloud Cluster)
+- `USER_SIGNATURE` (Secure JWT secret)
+- `SALT_ROUNDS` (Bcrypt hashing difficulty)
 
 ---
 
