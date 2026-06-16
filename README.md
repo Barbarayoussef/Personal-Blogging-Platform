@@ -225,6 +225,7 @@ All errors follow this format:
 This API is fully deployed and accessible in production.
 
 - **Live Demo Link**: `https://personal-blogging-platform-production-2747.up.railway.app`
+- **API Docs (Swagger)**: [https://personal-blogging-platform-production-2747.up.railway.app/api-docs]
 
 ### Production Environment Variables Used
 
