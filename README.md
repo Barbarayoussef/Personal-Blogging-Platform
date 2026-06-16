@@ -26,7 +26,7 @@ A RESTful API for a personal blogging platform that allows users to register, lo
 ### Prerequisites
 
 - Node.js v18+
-- MongoDB running locally or a MongoDB Atlas connection string
+- MongoDB running locally or a MongoDB connection string
 
 ### Installation
 
@@ -229,7 +229,7 @@ This API is fully deployed and accessible in production.
 ### Production Environment Variables Used
 
 - `PORT` (Dynamically assigned by Railway)
-- `MONGO_URL` (Hosted via MongoDB Atlas Cloud Cluster)
+- `MONGO_URL` (Hosted via Managed Railway MongoDB Plugin Service)
 - `USER_SIGNATURE` (Secure JWT secret)
 - `SALT_ROUNDS` (Bcrypt hashing difficulty)
 
