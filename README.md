@@ -224,7 +224,7 @@ All errors follow this format:
 
 This API is fully deployed and accessible in production.
 
-- **Live Demo Link**: `https://your-project-production.up.railway.app`
+- **Live Demo Link**: `https://personal-blogging-platform-production-2747.up.railway.app`
 
 ### Production Environment Variables Used
 
