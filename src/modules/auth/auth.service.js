@@ -3,40 +3,6 @@ import bcrypt from "bcrypt";
 import env from "../../../config/env.service.js";
 import { generateBothTokens } from "../../middleware/authenticate.js";
 
-/**
- * @swagger
- * /auth/register:
- *   post:
- *     summary: Register a new user
- *     tags: [Auth]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required: [name, email, password, confirmPassword]
- *             properties:
- *               name:
- *                 type: string
- *                 example: Barbara Youssef
- *               email:
- *                 type: string
- *                 example: barbara@example.com
- *               password:
- *                 type: string
- *                 example: Password1
- *               confirmPassword:
- *                 type: string
- *                 example: Password1
- *     responses:
- *       201:
- *         description: User created successfully
- *       400:
- *         description: Email already exists or passwords do not match
- *       500:
- *         description: Internal Server Error
- */
 export const registerUser = async (req, res) => {
   try {
     let { name, email, password, confirmPassword } = req.body;
@@ -60,47 +26,6 @@ export const registerUser = async (req, res) => {
   }
 };
 
-/**
- * @swagger
- * /auth/login:
- *   post:
- *     summary: Login and receive JWT tokens
- *     tags: [Auth]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required: [email, password]
- *             properties:
- *               email:
- *                 type: string
- *                 example: barbara@example.com
- *               password:
- *                 type: string
- *                 example: Password1
- *     responses:
- *       200:
- *         description: Login successful
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                 accessToken:
- *                   type: string
- *                 refreshToken:
- *                   type: string
- *       400:
- *         description: Invalid password
- *       404:
- *         description: Email not found
- *       500:
- *         description: Internal Server Error
- */
 export const loginUser = async (req, res) => {
   try {
     let { email, password } = req.body;
