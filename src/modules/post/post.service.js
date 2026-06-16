@@ -1,26 +1,5 @@
 import postModel from "./../../database/models/post.model.js";
 
-/**
- * @swagger
- * components:
- *   schemas:
- *     Post:
- *       type: object
- *       properties:
- *         _id:
- *           type: string
- *         title:
- *           type: string
- *         content:
- *           type: string
- *         authorId:
- *           type: string
- *         createdAt:
- *           type: string
- *         updatedAt:
- *           type: string
- */
-
 export const getAllPosts = async (req, res) => {
   try {
     let posts = await postModel.find();
